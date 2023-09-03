@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Data from "./Data.json";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <table className="table">
+        <thead>
+          <td>userId</td>
+          <td>Id</td>
+          <td>Title</td>
+          <td>Body</td>
+        </thead>
+        <tbody>
+          {Data.map((d, i) => (
+            <tr key={i}>
+              <td>{d.userId}</td>
+              <td>{d.id}</td>
+              <td>{d.title}</td>
+              <td>{d.body}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
