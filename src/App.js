@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import Data from "./Data.json";
-import { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-
-  const [currentPage,setCurrentPage]=useState(1);
-   const recordsPerPage=5;
-  const lastIndex=currentPage*recordsPerPage;
-  const firstIndex=lastIndex-recordsPerPage;
-  const records=Data.slice(firstIndex,lastIndex);
-  const npage=Math.ceil(Data.length/recordsPerPage);
-  const numbers=[...Array(npage+1).keys()].slice(1)
+  const [currentPage, setCurrentPage] = useState(1);
+  const recordsPerPage = 5;
+  const lastIndex = currentPage * recordsPerPage;
+  const firstIndex = lastIndex - recordsPerPage;
+  const records = Data.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(Data.length / recordsPerPage);
+  const numbers = [...Array(npage + 1).keys()].slice(1);
   return (
     <div>
       <table className="table">
@@ -32,6 +30,32 @@ function App() {
           ))}
         </tbody>
       </table>
+
+      <nav>
+        <ul className="pagination">
+          <li className="page-item">
+            <a href="#" className="page-link" onClick={prevPage}>
+              prev
+            </a>
+          </li>
+
+          {numbers.map((n, i) => (
+            <li
+              className={`page-item ${currentPage === n ? "active" : ""}`}
+              key={i}
+            >
+              <a href="#" className="page-link" onClick={changepage}>
+                {n}
+              </a>
+            </li>
+          ))}
+          <li className="page-item">
+            <a href="#" className="page-link" onClick={nextpage}>
+              next
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 }
