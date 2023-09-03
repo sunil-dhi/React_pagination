@@ -20,7 +20,7 @@ function App() {
           <td>Body</td>
         </thead>
         <tbody>
-          {Data.map((d, i) => (
+          {records.map((d, i) => (
             <tr key={i}>
               <td>{d.userId}</td>
               <td>{d.id}</td>
@@ -44,7 +44,7 @@ function App() {
               className={`page-item ${currentPage === n ? "active" : ""}`}
               key={i}
             >
-              <a href="#" className="page-link" onClick={changepage}>
+              <a href="#" className="page-link" onClick={()=>changepage(n)}>
                 {n}
               </a>
             </li>
@@ -58,6 +58,21 @@ function App() {
       </nav>
     </div>
   );
+  function changepage(id){
+     setCurrentPage(id)
+  }
+  function prevPage(){
+     if(currentPage!=firstIndex)
+     {
+      setCurrentPage(currentPage-1)
+     }
+  }
+  function nextpage(){
+    if(currentPage!=lastIndex)
+    {
+     setCurrentPage(currentPage+1)
+    }
+  }
 }
 
 export default App;
