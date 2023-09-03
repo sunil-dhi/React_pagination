@@ -62,13 +62,13 @@ function App() {
      setCurrentPage(id)
   }
   function prevPage(){
-     if(currentPage!=firstIndex)
+     if(currentPage!=1)
      {
       setCurrentPage(currentPage-1)
      }
   }
   function nextpage(){
-    if(currentPage!=lastIndex)
+    if(currentPage!=npage)
     {
      setCurrentPage(currentPage+1)
     }
